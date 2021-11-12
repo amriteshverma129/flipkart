@@ -1,0 +1,12 @@
+$bg-color:yellow;
+@mixin backStyle($par1){
+    height:$par1
+}
+.home {
+    color:red;
+    background-color: $bg-color;
+    @include backStyle(200px);
+    &:hover{
+        background-color:blue;
+    }
+}
