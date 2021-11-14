@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Mobiles from './mobile';
 import Laptops from './laptop';
 import LaptopDetail from './laptopDetail';
+import Cart from './cart';
 import Home from './home';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { ShoppingCartOutlined } from '@ant-design/icons'
@@ -25,7 +26,7 @@ const navbar = () => {
                                 <Nav.Link href="#memes">
                                     Login
                                 </Nav.Link> */}
-                                <Nav.Link href="#"     >
+                                <Nav.Link href="/cart"     >
                                     <ShoppingCartOutlined />
                                 </Nav.Link>
                             </Nav>
@@ -37,6 +38,7 @@ const navbar = () => {
                     <Route exact path="/mobile" component={Mobiles}></Route>
                     <Route exact path="/laptop" component={Laptops}></Route>
                     <Route exact path="/detail/laptop/:id" component={LaptopDetail}></Route>
+                    <Route exact path="/cart" component={Cart}></Route>
                 </Switch>
             </Router>
         </React.Fragment>

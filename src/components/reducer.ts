@@ -1,19 +1,16 @@
 const initialState = {
-    userName: ""
+    quantity: 0
 }
 
-export default function reducer(state = initialState, { type, userName }) {
-    switch (type) {
+export default function reducer(state = initialState, action: any) {
+    switch (action.type) {
 
-        case "AUTHENTICATE":
-            console.log("======auth");
-            return Object.assign({}, state, {
-                userName: userName
-            });
-        case "UNAUTHENTICATE":
-            return Object.assign({}, state, {
-                userName: userName
-            });
+        case "INCREASE_QUANTITY":
+            return { ...state, quantity: state.quantity + 1 };
+            break;
+        case "DECREASE_QUANTITY":
+            return { ...state, quantity: state.quantity - 1 };
+            break;
 
         default:
             return state
