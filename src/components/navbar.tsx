@@ -1,15 +1,17 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Mobile from './mobile';
-import Laptop from './laptop';
+import Mobiles from './mobile';
+import Laptops from './laptop';
+import LaptopDetail from './laptopDetail';
 import Home from './home';
-import { Navbar, Container, Nav } from 'react-bootstrap'
+import { Navbar, Container, Nav } from 'react-bootstrap';
+import { ShoppingCartOutlined } from '@ant-design/icons'
 
 const navbar = () => {
     return (
-        <React.Fragment>
+        <React.Fragment >
             <Router>
-                <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+                <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
                     <Container>
                         <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -19,19 +21,22 @@ const navbar = () => {
                                 <Nav.Link href="/mobile">Mobile</Nav.Link>
                             </Nav>
                             <Nav>
-                                <Nav.Link href="#deets">Contact Us</Nav.Link>
+                                {/* <Nav.Link href="#deets">Contact Us</Nav.Link>
                                 <Nav.Link href="#memes">
                                     Login
+                                </Nav.Link> */}
+                                <Nav.Link href="#"     >
+                                    <ShoppingCartOutlined />
                                 </Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
                     </Container>
                 </Navbar>
-                <br />
                 <Switch>
                     <Route exact path="/" component={Home}></Route>
-                    <Route exact path="/mobile" component={Mobile}></Route>
-                    <Route exact path="/laptop" component={Laptop}></Route>
+                    <Route exact path="/mobile" component={Mobiles}></Route>
+                    <Route exact path="/laptop" component={Laptops}></Route>
+                    <Route exact path="/detail/laptop/:id" component={LaptopDetail}></Route>
                 </Switch>
             </Router>
         </React.Fragment>
