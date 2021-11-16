@@ -5,7 +5,7 @@ import { mapDispatchToProps, mapStateToProps } from './container'
 export const Cart = (props: any) => {
     return (
         <React.Fragment>
-            {props.quantity}
+            {props.cartQuantity}
         </React.Fragment>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Mobiles from './mobile';
 import Laptops from './laptop';
 import LaptopDetail from './laptopDetail';
@@ -12,31 +12,26 @@ const navbar = () => {
     return (
         <React.Fragment >
             <Router>
-                <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
-                    <Container>
-                        <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
-                        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                        <Navbar.Collapse id="responsive-navbar-nav">
-                            <Nav className="me-auto">
-                                <Nav.Link href="/laptop">Laptop</Nav.Link>
-                                <Nav.Link href="/mobile">Mobile</Nav.Link>
-                            </Nav>
-                            <Nav>
-                                {/* <Nav.Link href="#deets">Contact Us</Nav.Link>
-                                <Nav.Link href="#memes">
-                                    Login
-                                </Nav.Link> */}
-                                <Nav.Link href="/cart"     >
-                                    <ShoppingCartOutlined />
-                                </Nav.Link>
-                            </Nav>
-                        </Navbar.Collapse>
-                    </Container>
-                </Navbar>
+                <nav className="navbar navbar-expand-md bg-dark navbar-dark">
+                    <ul className="navbar-nav">
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/">Home</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/laptop">Laptop</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/mobile">Mobile</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/cart"><ShoppingCartOutlined /></Link>
+                        </li>
+                    </ul>
+                </nav>
                 <Switch>
                     <Route exact path="/" component={Home}></Route>
-                    <Route exact path="/mobile" component={Mobiles}></Route>
                     <Route exact path="/laptop" component={Laptops}></Route>
+                    <Route exact path="/mobile" component={Mobiles}></Route>
                     <Route exact path="/detail/laptop/:id" component={LaptopDetail}></Route>
                     <Route exact path="/cart" component={Cart}></Route>
                 </Switch>

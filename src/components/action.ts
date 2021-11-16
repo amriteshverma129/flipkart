@@ -1,11 +1,14 @@
-export const increaseQuantity = () => {
+import { SelectedObject } from "./reducer"
+export const increaseQuantity = (selectedObject: SelectedObject) => {
     return {
-        type: "INCREASE_QUANTITY"
+        type: "INCREASE_QUANTITY",
+        selectedObject: selectedObject
     }
 }
 
-export const decreaseQuantity = () => {
+export const decreaseQuantity = (selectedObject: SelectedObject) => {
     return {
-        type: "DECREASE_QUANTITY"
+        type: "DECREASE_QUANTITY",
+        selectedObject: selectedObject
     }
 }

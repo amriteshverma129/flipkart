@@ -1,18 +1,21 @@
 import { increaseQuantity, decreaseQuantity } from './action'
+import { SelectedObject } from './reducer';
+import { CartObject } from './reducer';
 
 export let mapDispatchToProps = (dispatch: any) => {
     return {
-        increaseQuantity: () => {
-            dispatch(increaseQuantity())
+        increaseQuantity: (selectedObject: SelectedObject) => {
+            dispatch(increaseQuantity(selectedObject))
         },
-        decreaseQuantity: () => {
-            dispatch(decreaseQuantity())
+        decreaseQuantity: (selectedObject: SelectedObject) => {
+            dispatch(decreaseQuantity(selectedObject))
         }
     }
 }
 
-export let mapStateToProps = (state: any) => {
+export let mapStateToProps = (state: CartObject) => {
     return {
-        quantity: state.quantity,
+        cartQuantity: state.cartQuantity,
+        cartArray: state.cartArray
     }
 }

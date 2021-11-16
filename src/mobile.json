@@ -1,6 +1,6 @@
 [
     {
-        "id": "0",
+        "id": "M0",
         "productName": "Huawei MateBook X Pro",
         "image": "images/mobile/mobile1.jpg",
         "cpu": "Intel Core i7, 8th generation",
@@ -11,7 +11,7 @@
         "description": "The Huawei MateBook X Pro is our pick for the best laptop money can buy in 2018. This is a gorgeously-designed laptop with a stunning screen (albeit with a rather odd aspect ratio), and it comes packed with cutting edge components that allows it to perform brilliantly, and a battery life that runs rings around many of its rivals. It also has a very competitive price, giving you features, design and performance for quite a bit less money."
     },
     {
-        "id": "1",
+        "id": "M1",
         "productName": "Apple Macbook Pro 2018",
         "image": "images/mobile/mobile2.jpg",
         "cpu": "6-core Intel i7, 8th generation",
@@ -33,7 +33,7 @@
         "description": "The Dell XPS 13 is an absolutely brilliant laptop. The 2018 version rocks an 8th-generation Intel Core i5 or i7 processor and a bezel-less ‘Infinity Edge’ display, this Dell XPS 13 continues to be the most popular Windows laptop in the world. What’s more, there’s a wide range of customization options, so you can really make the Dell XPS 13 the best laptop for your needs. "
     },
     {
-        "id": "3",
+        "id": "M3",
         "productName": "Asus ZenBook Flip S",
         "image": "images/mobile/mobile4.jpg",
         "cpu": "Intel Core i7, 8th generation",
@@ -44,7 +44,7 @@
         "description": "Asus has struck gold with its new refresh of its ZenBook Flip S 2-in-1 laptop. With a new Kaby Lake R 8th-generation processor powering the device, plenty of RAM and a super-fast PCIe SSD in certain models, this is an absolutely stunning laptop. Its 2-in-1 design means you can use it as both a laptop and a tablet, and while it's not as affordable as some other machines, if you have the budget you'll be really happy with this fantastic device."
     },
     {
-        "id": "4",
+        "id": "M4",
         "productName": "Samsung Notebook 9",
         "image": "images/mobile/mobile5.jpg",
         "cpu": "Intel Core i7, 8th generation",
