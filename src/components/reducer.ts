@@ -1,44 +1,44 @@
-export interface SelectedObject {
-    id: string,
-    quantity: number,
-}
-export interface CartObject {
-    cartQuantity: number,
-    cartArray: SelectedObject[]
-}
-const initialState: CartObject = {
+import { Cart } from "./interface";
+const initialState: Cart = {
     cartQuantity: 0,
-    cartArray: []
+    cartItemArray: []
 }
 
 export default function reducer(state = initialState, action: any) {
     switch (action.type) {
 
         case "INCREASE_QUANTITY":
-            let newCartArray: any[] = state.cartArray.filter((cartObject) => {
-                if (cartObject.id === action.selectedObject.id) {
-                    cartObject.quantity = cartObject.quantity + 1;
+            let newCartItemArray: any[] = state.cartItemArray.filter((cartItem) => {
+                if (cartItem.id === action.selectedObject.id) {
+                    cartItem.quantity = cartItem.quantity + 1;
                     return true
                 }
             })
-            if (newCartArray.length === 1) {
+            if (newCartItemArray.length === 1) {
                 return { ...state, cartQuantity: state.cartQuantity + 1 }
             }
-            return { ...state, cartQuantity: state.cartQuantity + 1, cartArray: [...state.cartArray, { id: action.selectedObject.id, quantity: action.selectedObject.quantity }] };
+            return { ...state, cartQuantity: state.cartQuantity + 1, cartItemArray: [...state.cartItemArray, action.selectedObject] };
             break;
         case "DECREASE_QUANTITY":
-            console.log("AMritesh verma")
-            console.log(state.cartArray)
-            console.log(action.selectedObject.id)
-            let array = state.cartArray.filter((cartObject) => {
-                if (cartObject.id === action.selectedObject.id) {
-                    cartObject.quantity = cartObject.quantity - 1;
-                    return cartObject
+            let array = state.cartItemArray.filter((cartItem) => {
+                if (cartItem.id === action.selectedObject.id) {
+                    if (cartItem.quantity === 1) {
+                        return false
+                    }
+                    else {
+                        cartItem.quantity = cartItem.quantity - 1;
+                        return true;
+                    }
                 }
-                return cartObject
+                return true
             })
-            state.cartArray = array;
-            return state
+            state.cartItemArray = array;
+            if (state.cartQuantity <= 0) {
+                return state
+            }
+            else {
+                return { ...state, cartQuantity: state.cartQuantity - 1 }
+            }
             break;
 
         default:

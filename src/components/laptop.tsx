@@ -4,7 +4,6 @@ import laptops from '../laptop.json';
 import { mapDispatchToProps, mapStateToProps } from './container';
 
 export const Laptops = (props: any) => {
-    console.log(props.quantity);
 
     return (
         <React.Fragment>

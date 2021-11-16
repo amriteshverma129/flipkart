@@ -1,6 +1,6 @@
 import { increaseQuantity, decreaseQuantity } from './action'
-import { SelectedObject } from './reducer';
-import { CartObject } from './reducer';
+import { SelectedObject } from './interface';
+import { Cart } from './interface';
 
 export let mapDispatchToProps = (dispatch: any) => {
     return {
@@ -13,9 +13,9 @@ export let mapDispatchToProps = (dispatch: any) => {
     }
 }
 
-export let mapStateToProps = (state: CartObject) => {
+export let mapStateToProps = (state: Cart) => {
     return {
         cartQuantity: state.cartQuantity,
-        cartArray: state.cartArray
+        cartItemArray: state.cartItemArray
     }
 }

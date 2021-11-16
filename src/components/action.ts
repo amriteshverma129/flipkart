@@ -1,4 +1,4 @@
-import { SelectedObject } from "./reducer"
+import { SelectedObject } from "./interface"
 export const increaseQuantity = (selectedObject: SelectedObject) => {
     return {
         type: "INCREASE_QUANTITY",
