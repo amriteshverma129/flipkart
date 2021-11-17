@@ -6,10 +6,11 @@ import LaptopDetail from './laptopDetail';
 import MobileDetail from './mobileDetail';
 import Cart from './cart';
 import Home from './home';
-import { Navbar, Container, Nav } from 'react-bootstrap';
 import { ShoppingCartOutlined } from '@ant-design/icons'
+import { connect } from 'react-redux';
+import { mapDispatchToProps, mapStateToProps } from './container';
 
-const navbar = () => {
+export const navbar = (props: any) => {
     return (
         <React.Fragment >
             <Router>
@@ -25,7 +26,7 @@ const navbar = () => {
                             <Link className="nav-link" to="/mobile">Mobile</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/cart"><ShoppingCartOutlined /></Link>
+                            <Link className="nav-link" to="/cart"><ShoppingCartOutlined /><span>{props.cartQuantity}</span></Link>
                         </li>
                     </ul>
                 </nav>
@@ -42,4 +43,4 @@ const navbar = () => {
     )
 }
 
-export default navbar
+export default connect(mapStateToProps, mapDispatchToProps)(navbar)

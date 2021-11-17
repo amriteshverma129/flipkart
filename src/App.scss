@@ -10,3 +10,19 @@ $bg-color:yellow;
         background-color:blue;
     }
 }
+.cart,.mobileCart,.laptopCart{
+  >div{
+    display:flex;
+    flex-direction: row;
+    >div{
+       width:100%;
+       img{
+           width:100%;
+           object-fit: contain;
+       }
+    }
+    @media only screen and (max-width:767px){
+     flex-direction: column;  
+    }
+  }
+}

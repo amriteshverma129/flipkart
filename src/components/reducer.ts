@@ -17,7 +17,7 @@ export default function reducer(state = initialState, action: any) {
             if (newCartItemArray.length === 1) {
                 return { ...state, cartQuantity: state.cartQuantity + action.selectedObject.quantity }
             }
-            return { ...state, cartQuantity: state.cartQuantity + 1, cartItemArray: [...state.cartItemArray, action.selectedObject] };
+            return { ...state, cartQuantity: state.cartQuantity + action.selectedObject.quantity, cartItemArray: [...state.cartItemArray, action.selectedObject] };
             break;
         case "DECREASE_QUANTITY":
             let array = state.cartItemArray.filter((cartItem) => {
@@ -37,7 +37,7 @@ export default function reducer(state = initialState, action: any) {
                 return state
             }
             else {
-                return { ...state, cartQuantity: state.cartQuantity - 1 }
+                return { ...state, cartQuantity: state.cartQuantity - action.selectedObject.quantity }
             }
             break;
 
