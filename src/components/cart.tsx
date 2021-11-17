@@ -14,7 +14,7 @@ export const Cart = (props: any) => {
                     {item.id}<br />
                     <button className="btn btn-success" onClick={() => props.decreaseQuantity({ id: item.id, quantity: 1 })}>-</button>{item.quantity}
                     <button className="btn btn-success" onClick={() => props.increaseQuantity({ id: item.id, quantity: 1 })}>+</button><br />
-                    <button className="btn btn-primary m-2">Back</button>
+                    <button className="btn btn-primary m-2" onClick={() => props.decreaseQuantity({ id: item.id, quantity: item.quantity })}>Remove</button>
 
                 </div>
             })}
