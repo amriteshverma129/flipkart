@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Mobiles from './mobile';
 import Laptops from './laptop';
 import LaptopDetail from './laptopDetail';
+import MobileDetail from './mobileDetail';
 import Cart from './cart';
 import Home from './home';
 import { Navbar, Container, Nav } from 'react-bootstrap';
@@ -33,6 +34,7 @@ const navbar = () => {
                     <Route exact path="/laptop" component={Laptops}></Route>
                     <Route exact path="/mobile" component={Mobiles}></Route>
                     <Route exact path="/detail/laptop/:id" component={LaptopDetail}></Route>
+                    <Route exact path="/detail/mobile/:id" component={MobileDetail}></Route>
                     <Route exact path="/cart" component={Cart}></Route>
                 </Switch>
             </Router>

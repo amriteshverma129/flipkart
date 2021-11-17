@@ -2,7 +2,7 @@
     {
         "id": "M0",
         "productName": "Huawei MateBook X Pro",
-        "image": "images/mobile/mobile1.jpg",
+        "image": "/images/mobile/mobile1.jpg",
         "cpu": "Intel Core i7, 8th generation",
         "ram": "8GB",
         "storage": "512 GB SSD",
@@ -13,7 +13,7 @@
     {
         "id": "M1",
         "productName": "Apple Macbook Pro 2018",
-        "image": "images/mobile/mobile2.jpg",
+        "image": "/images/mobile/mobile2.jpg",
         "cpu": "6-core Intel i7, 8th generation",
         "ram": "16GB",
         "storage": "1TB GB SSD",
@@ -22,9 +22,9 @@
         "description": "If you're after the latest and greatest laptop from Apple, we suggest you look into the 2018 model of the 15-inch MacBook Pro with Touch Bar. The headline Touch Bar – a thin OLED display at the top of the keyboard which can be used for any number of things, whether that be auto-suggesting words as you type or offering Touch ID so you can log in with just your fingerprint – is of course included. It's certainly retained Apple's sense of style, but it comes at a cost. This is a pricey machine, so you may want to consider one of the Windows alternatives. But, if you're a steadfast Apple diehard, this is definitely the best laptop for you!"
     },
     {
-        "id": "2",
+        "id": "M2",
         "productName": "Dell XPS 13",
-        "image": "images/mobile/mobile3.jpg",
+        "image": "/images/mobile/mobile3.jpg",
         "cpu": "Intel Core i7, 8th generation",
         "ram": "16GB",
         "storage": "512 GB SSD",
@@ -35,7 +35,7 @@
     {
         "id": "M3",
         "productName": "Asus ZenBook Flip S",
-        "image": "images/mobile/mobile4.jpg",
+        "image": "/images/mobile/mobile4.jpg",
         "cpu": "Intel Core i7, 8th generation",
         "ram": "16GB",
         "storage": "512 GB SSD",
@@ -46,7 +46,7 @@
     {
         "id": "M4",
         "productName": "Samsung Notebook 9",
-        "image": "images/mobile/mobile5.jpg",
+        "image": "/images/mobile/mobile5.jpg",
         "cpu": "Intel Core i7, 8th generation",
         "ram": "16GB",
         "storage": "256 GB SSD",
