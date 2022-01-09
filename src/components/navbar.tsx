@@ -11,10 +11,12 @@ import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from './container';
 
 export const navbar = (props: any) => {
+    const name = ['navbar', " navbar-expand-md", "bg-dark", 'navbar-dark']
+    let name2 = name.join(' ')
     return (
         <React.Fragment >
             <Router>
-                <nav className="navbar navbar-expand-md bg-dark navbar-dark">
+                <nav className={`${name2}`}>
                     <ul className="navbar-nav">
                         <li className="nav-item">
                             <Link className="nav-link" to="/">Home</Link>
