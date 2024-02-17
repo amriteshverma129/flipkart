@@ -1,10 +1,15 @@
 import React from "react";
 import laptops from "../laptop.json";
 import { useNavigate, useParams } from "react-router";
+import { useDispatch } from "react-redux";
+import { Dispatch, PayloadAction } from "@reduxjs/toolkit";
+import { SelectedObject } from "./interface";
+import { addItem } from "../utils/cartSlice";
 
-export const LaptopDetail = (props: any) => {
+export const LaptopDetail = () => {
   const navigate = useNavigate();
   const params = useParams();
+  const dispatch = useDispatch<Dispatch<PayloadAction<SelectedObject>>>();
 
   let selectedLaptop = laptops.filter((item) => {
     if (item.id === String(params.id)) return true;
@@ -47,9 +52,7 @@ export const LaptopDetail = (props: any) => {
               </button>
               <button
                 className="btn btn-primary m-2"
-                onClick={() =>
-                  props.increaseQuantity({ ...selectedLaptop[0], quantity: 1 })
-                }
+                onClick={() => dispatch(addItem(selectedLaptop[0]))}
               >
                 Add to Cart
               </button>

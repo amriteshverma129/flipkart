@@ -2,7 +2,7 @@ import React from "react";
 import laptops from "../laptop.json";
 import { useNavigate } from "react-router";
 
-export const Laptops = (props: any) => {
+export const Laptops = () => {
   const navigate = useNavigate();
   return (
     <React.Fragment>

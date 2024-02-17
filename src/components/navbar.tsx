@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 
-export const navbar = (props: any) => {
+const Navbar = (props: any) => {
   const name = ["navbar", " navbar-expand-md", "bg-dark", "navbar-dark"];
   let name2 = name.join(" ");
 
-  //const selector= useSelector((store)=> store?.cart?.cartItemArray?.)
+  const selector = useSelector((store) => store);
+  console.log(selector);
   return (
     <React.Fragment>
       <nav className={`${name2}`}>
@@ -39,4 +40,4 @@ export const navbar = (props: any) => {
   );
 };
 
-export default navbar;
+export default Navbar;

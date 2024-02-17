@@ -1,10 +1,15 @@
 import React from "react";
 import mobiles from "../mobile.json";
 import { useNavigate, useParams } from "react-router";
+import { useDispatch } from "react-redux";
+import { Dispatch, PayloadAction } from "@reduxjs/toolkit";
+import { SelectedObject } from "./interface";
+import { addItem } from "../utils/cartSlice";
 
-export const MobileDetail = (props: any) => {
+export const MobileDetail = () => {
   const navigate = useNavigate();
   const params = useParams();
+  const dispatch = useDispatch<Dispatch<PayloadAction<SelectedObject>>>();
 
   let selectedMobile = mobiles.filter((item) => {
     if (item.id === String(params.id)) return true;
@@ -47,9 +52,7 @@ export const MobileDetail = (props: any) => {
               </button>
               <button
                 className="btn btn-primary m-2"
-                onClick={() =>
-                  props.increaseQuantity({ ...selectedMobile[0], quantity: 1 })
-                }
+                onClick={() => dispatch(addItem(selectedMobile[0]))}
               >
                 Add to Cart
               </button>

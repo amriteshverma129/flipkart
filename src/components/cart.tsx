@@ -1,13 +1,19 @@
 import React from "react";
 import { SelectedObject } from "./interface";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { CartState, addItem, removeItem } from "../utils/cartSlice";
+import { Dispatch, PayloadAction } from "@reduxjs/toolkit";
 
 export const Cart = () => {
-  //  const cartItemArray= useSelector((store)=>store.)
+  const dispatch = useDispatch<Dispatch<PayloadAction<SelectedObject>>>();
+  const cartItemArray = useSelector(
+    (store: { cart: CartState }) => store.cart.cartItemArray
+  );
+
   return (
     <React.Fragment>
       <div className="container-fluid">
-        {/* {props.cartItemArray.map((item: SelectedObject, index: any) => {
+        {cartItemArray.map((item: SelectedObject, index: any) => {
           return (
             <div key={index} className="row card cart">
               <div className="card-body">
@@ -32,29 +38,20 @@ export const Cart = () => {
                   </details>
                   <button
                     className="btn btn-success"
-                    onClick={() =>
-                      props.decreaseQuantity({ ...item, quantity: 1 })
-                    }
+                    onClick={() => dispatch(addItem(item))}
                   >
                     -
                   </button>
                   <span className="p-2">{item.quantity}</span>
                   <button
                     className="btn btn-success mr-5"
-                    onClick={() =>
-                      props.increaseQuantity({ ...item, quantity: 1 })
-                    }
+                    onClick={() => dispatch(addItem(item))}
                   >
                     +
                   </button>
                   <button
                     className="btn btn-primary m-2"
-                    onClick={() =>
-                      props.decreaseQuantity({
-                        ...item,
-                        quantity: item.quantity,
-                      })
-                    }
+                    onClick={() => dispatch(removeItem(item))}
                   >
                     Remove
                   </button>
@@ -62,7 +59,7 @@ export const Cart = () => {
               </div>
             </div>
           );
-        })} */}
+        })}
       </div>
     </React.Fragment>
   );
