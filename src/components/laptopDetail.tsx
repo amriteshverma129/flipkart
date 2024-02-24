@@ -3,7 +3,7 @@ import laptops from "../laptop.json";
 import { useNavigate, useParams } from "react-router";
 import { useDispatch } from "react-redux";
 import { Dispatch, PayloadAction } from "@reduxjs/toolkit";
-import { SelectedObject } from "./interface";
+import { SelectedObject } from "../utils/type";
 import { addItem } from "../utils/cartSlice";
 
 export const LaptopDetail = () => {
@@ -17,16 +17,16 @@ export const LaptopDetail = () => {
 
   return (
     <React.Fragment>
-      <div className="container-fluid">
-        <div className="row card laptopCart">
-          <div className="card-body">
+      <div className="">
+        <div className="">
+          <div className="">
             <div>
               <img
                 src={selectedLaptop[0].image}
                 alt={selectedLaptop[0].productName}
               />
             </div>
-            <div className="card-body">
+            <div className="">
               <h1>{selectedLaptop[0].productName}</h1>
               <span>{selectedLaptop[0].cpu}</span>
               <br />
@@ -43,7 +43,7 @@ export const LaptopDetail = () => {
                 {selectedLaptop[0].description}
               </details>
               <button
-                className="btn btn-primary m-2"
+                className=""
                 onClick={() => {
                   navigate("/cart");
                 }}
@@ -51,7 +51,7 @@ export const LaptopDetail = () => {
                 Move to Cart
               </button>
               <button
-                className="btn btn-primary m-2"
+                className=""
                 onClick={() => dispatch(addItem(selectedLaptop[0]))}
               >
                 Add to Cart

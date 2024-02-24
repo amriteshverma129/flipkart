@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { SelectedObject } from "../components/interface";
+import { SelectedObject } from "./type";
 
 export interface CartState {
   cartQuantity: number;
@@ -20,11 +20,17 @@ const cartSlice = createSlice({
       state.cartItemArray.push(action.payload);
       state.cartQuantity++;
     },
-    removeItem: (state, action) => {
-      state.cartItemArray.pop();
+    removeItem: (state, action: PayloadAction<SelectedObject>) => {
+      state.cartItemArray = state.cartItemArray.filter(
+        (cartItem) => cartItem.id !== action.payload.id
+      );
       state.cartQuantity--;
+    },
+    clearItem: (state) => {
+      state.cartItemArray = [];
+      state.cartQuantity = 0;
     },
   },
 });
-export const { addItem, removeItem } = cartSlice.actions;
+export const { addItem, removeItem, clearItem } = cartSlice.actions;
 export default cartSlice.reducer;

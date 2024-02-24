@@ -1,15 +1,13 @@
-import React from 'react'
+import React from "react";
 
 const footer = () => {
-    return (
-        <React.Fragment>
-            <div className="footer container-fluid position-relative top-100">
-                <div className="row bg-primary text-light p-3"  >
-                    @copyright
-                </div>
-            </div>
-        </React.Fragment>
-    )
-}
+  return (
+    <React.Fragment>
+      <div className="">
+        <div className="">@copyright</div>
+      </div>
+    </React.Fragment>
+  );
+};
 
-export default footer
+export default footer;

@@ -1,22 +1,23 @@
-import React, { Component } from "react";
 import Footer from "./components/footer";
 import Navbar from "./components/navbar";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.scss";
+import "./App.css";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import Laptop from "./components/laptop";
 import Mobiles from "./components/mobile";
 import Cart from "./components/cart";
 import MobileDetail from "./components/mobileDetail";
 import LaptopDetail from "./components/laptopDetail";
+import React from "react";
 
 const AppLayout = () => {
   return (
-    <div>
+    <React.Fragment>
       <Navbar />
-      <Outlet />
+      <div className="container mx-auto">
+        <Outlet />
+      </div>
       <Footer />
-    </div>
+    </React.Fragment>
   );
 };
 
@@ -25,6 +26,10 @@ const appRouter = createBrowserRouter([
     path: "/",
     element: <AppLayout />,
     children: [
+      {
+        path: "/",
+        element: <Laptop />,
+      },
       {
         path: "/laptop",
         element: <Laptop />,
