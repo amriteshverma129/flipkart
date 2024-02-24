@@ -1,15 +1,18 @@
 import React from "react";
 import mobiles from "../mobile.json";
 import { useNavigate } from "react-router";
-import { SelectedObject } from "../utils/type";
 import { useDispatch } from "react-redux";
 import { Dispatch, PayloadAction } from "@reduxjs/toolkit";
 import { addItem } from "../utils/cartSlice";
+import { itemType } from "../utils/type";
 const Mobiles = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch<Dispatch<PayloadAction<SelectedObject>>>();
+  const dispatch =
+    useDispatch<
+      Dispatch<PayloadAction<{ item: itemType; quantity: number }>>
+    >();
 
-  const handleTitleClick = (item: SelectedObject) => {
+  const handleTitleClick = (item: itemType) => {
     navigate(`/mobile/${item.id}`);
   };
   return (
@@ -45,7 +48,7 @@ const Mobiles = () => {
                 <span className="mb-1 block">{item.price}</span>
                 <a
                   href="#"
-                  onClick={() => dispatch(addItem(item))}
+                  onClick={() => dispatch(addItem({ item, quantity: 1 }))}
                   className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   Add To Cart

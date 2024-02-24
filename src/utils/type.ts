@@ -1,4 +1,9 @@
-export interface SelectedObject {
+export interface CartType {
+  cartQuantity: number;
+  cartItemArray: { item: itemType; quantity: number }[];
+}
+
+export type itemType = {
   id: string;
   productName?: string;
   image?: string;
@@ -8,10 +13,4 @@ export interface SelectedObject {
   screen?: string;
   price?: string;
   description?: string;
-  quantity?: number;
-}
-
-export interface Cart {
-  cartQuantity: number;
-  cartItemArray: SelectedObject[];
-}
+};

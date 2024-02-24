@@ -3,13 +3,16 @@ import laptops from "../laptop.json";
 import { useNavigate, useParams } from "react-router";
 import { useDispatch } from "react-redux";
 import { Dispatch, PayloadAction } from "@reduxjs/toolkit";
-import { SelectedObject } from "../utils/type";
 import { addItem } from "../utils/cartSlice";
+import { itemType } from "../utils/type";
 
 export const LaptopDetail = () => {
   const navigate = useNavigate();
   const params = useParams();
-  const dispatch = useDispatch<Dispatch<PayloadAction<SelectedObject>>>();
+  const dispatch =
+    useDispatch<
+      Dispatch<PayloadAction<{ item: itemType; quantity: number }>>
+    >();
 
   let selectedLaptop = laptops.filter((item) => {
     if (item.id === String(params.id)) return true;
@@ -52,7 +55,9 @@ export const LaptopDetail = () => {
               </button>
               <button
                 className=""
-                onClick={() => dispatch(addItem(selectedLaptop[0]))}
+                onClick={() =>
+                  dispatch(addItem({ item: selectedLaptop[0], quantity: 1 }))
+                }
               >
                 Add to Cart
               </button>

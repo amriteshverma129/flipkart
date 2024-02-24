@@ -1,39 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { ShoppingCartOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
+import { CartType } from "../utils/type";
 
-const Navbar = (props: any) => {
-  const selector = useSelector((store) => store);
-  console.log(selector);
+const Navbar = () => {
+  const count = useSelector(
+    (store: { cart: CartType }) => store.cart.cartQuantity
+  );
+  const [showDropDown, setShowDropDown] = useState(false);
+
   return (
     <React.Fragment>
-      {/* <nav className="">
-        <ul className="navbar-nav">
-          <li className="nav-item">
-            <Link className="nav-link" to="/">
-              Home
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/laptop">
-              Laptop
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/mobile">
-              Mobile
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/cart">
-              <ShoppingCartOutlined />
-              <span>{props.cartQuantity}</span>
-            </Link>
-          </li>
-        </ul>
-      </nav> */}
-
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a
@@ -49,70 +26,66 @@ const Navbar = (props: any) => {
               Shopping
             </span>
           </a>
-          <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+          <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse relative">
             <button
               type="button"
               className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-              id="user-menu-button"
-              aria-expanded="false"
-              data-dropdown-toggle="user-dropdown"
-              data-dropdown-placement="bottom"
+              onClick={() => setShowDropDown(!showDropDown)}
             >
               <span className="sr-only">Open user menu</span>
               <img
                 className="w-8 h-8 rounded-full"
                 src="./Amritesh.jpeg"
-                alt="user photo"
+                alt="Amritesh Verma"
               />
             </button>
             {/* <!-- Dropdown menu --> */}
-            <div
-              className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
-              id="user-dropdown"
-            >
-              <div className="px-4 py-3">
-                <span className="block text-sm text-gray-900 dark:text-white">
-                  Bonnie Green
-                </span>
-                <span className="block text-sm  text-gray-500 truncate dark:text-gray-400">
-                  name@flowbite.com
-                </span>
+            {showDropDown && (
+              <div className="absolute top-5 right-10 right z-50  my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
+                <div className="px-4 py-3">
+                  <span className="block text-sm text-gray-900 dark:text-white">
+                    Amritesh Verma
+                  </span>
+                  <span className="block text-sm  text-gray-500 truncate dark:text-gray-400">
+                    amriteshverma129@gmail.com
+                  </span>
+                </div>
+                <ul className="py-2" aria-labelledby="user-menu-button">
+                  <li>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >
+                      Dashboard
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >
+                      Settings
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >
+                      Earnings
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >
+                      Sign out
+                    </a>
+                  </li>
+                </ul>
               </div>
-              <ul className="py-2" aria-labelledby="user-menu-button">
-                <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                  >
-                    Dashboard
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                  >
-                    Settings
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                  >
-                    Earnings
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                  >
-                    Sign out
-                  </a>
-                </li>
-              </ul>
-            </div>
+            )}
             <button
               data-collapse-toggle="navbar-user"
               type="button"
@@ -146,13 +119,6 @@ const Navbar = (props: any) => {
               <li>
                 <Link className="nav-link" to="/laptop">
                   <span className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-                    Home
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link className="nav-link" to="/laptop">
-                  <span className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                     Laptop
                   </span>
                 </Link>
@@ -167,7 +133,7 @@ const Navbar = (props: any) => {
               <li>
                 <Link className="nav-link" to="/cart">
                   <span className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-                    Cart
+                    Cart ({count})
                   </span>
                 </Link>
               </li>
