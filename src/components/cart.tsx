@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, clearItem, removeItem } from "../utils/cartSlice";
 import { Dispatch, PayloadAction } from "@reduxjs/toolkit";
@@ -15,6 +15,16 @@ export const Cart = () => {
   const count = useSelector(
     (store: { cart: CartType }) => store.cart.cartQuantity
   );
+
+  const subTotal = useMemo(() => {
+    return cartItemArray.reduce(
+      (acc, item) => item.quantity * Number(item?.item?.price) + acc,
+      0
+    );
+  }, [cartItemArray]);
+  const taxEstimate = useMemo(() => {
+    return (subTotal * 18) / 100;
+  }, [subTotal]);
 
   return (
     <React.Fragment>
@@ -84,16 +94,22 @@ export const Cart = () => {
                 Order Summary
               </h3>
               <div className="flex flex-col">
-                <div className="text-[grey] text-[14px] border-[#dddbdb] border-b-2 py-3">
-                  Subtotal
+                <div className="text-[grey] text-[14px] border-[#dddbdb] border-b-2 py-3 flex flex-row justify-between">
+                  <div>Subtotal</div>
+                  <div>$ {subTotal}</div>
                 </div>
-                <div className="text-[grey] text-[14px] border-[#dddbdb] border-b-2 py-3">
-                  Shipping estimate{" "}
+                <div className="text-[grey] text-[14px] border-[#dddbdb] border-b-2 py-3 flex flex-row justify-between">
+                  <div>Shipping estimate</div>
+                  <div>$ 2</div>
                 </div>
-                <div className="text-[grey] text-[14px] border-[#dddbdb] border-b-2 py-3">
-                  Tax extimate
+                <div className="text-[grey] text-[14px] border-[#dddbdb] border-b-2 py-3 flex flex-row justify-between">
+                  <div>Tax extimate</div>
+                  <div>$ {taxEstimate}</div>
                 </div>
-                <div className="text-[grey]  text-[14px] py-3">Order Total</div>
+                <div className="text-[grey]  text-[14px] py-3 flex flex-row justify-between">
+                  <div>Order Total</div>
+                  <div>$ {taxEstimate + 2 + subTotal}</div>
+                </div>
               </div>
               <button className=" w-[100%] p-2 rounded-md bg-sky-700 text-[white] mt-3">
                 Checkout
